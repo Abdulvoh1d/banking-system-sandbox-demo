@@ -1,25 +1,63 @@
-# Banking System Backend — personal banking sandbox
+# Banking System Sandbox
 
-A standalone, browser-only banking dashboard demo. It presents two fictional sample accounts, their available balances, and a sample transaction ledger. Despite the project name, this repository is only a front-end sandbox—not a banking backend.
+Northstar Personal — namunaviy hisoblar va tranzaksiyalarni ko‘rsatib, brauzer ichida tekshiriladigan simulyatsiya transferini bajaradigan, haqiqiy bank xizmatlariga ulanmaydigan demo ilova.
 
-## What works in the demo
+## Havolalar
 
-- View the available balances for Everyday Checking and Growth Savings, plus a combined sample balance and illustrative monthly totals.
-- Select either account to filter the activity ledger; search transactions and switch between all activity and simulated transfers.
-- Create a simulated transfer between the two sample accounts. The form checks that the accounts differ, the amount is positive and no greater than the available sample balance, and the amount is within the demo limit. An optional note is supported.
-- Review the source, destination, amount, and optional note in a confirmation step. On confirmation, the demo updates both balances and adds debit and credit ledger entries.
-- Keep demo changes in this browser's `localStorage`, including after a page reload. Use the reset control to restore the original sample data.
+- [Jonli demo](https://banking-system-sandbox-demo.netlify.app)
+- [GitHub repository](https://github.com/Abdulvoh1d/banking-system-sandbox-demo)
 
-## Sample-data and integration boundary
+## Loyiha nimani ko‘rsatadi
 
-Every name, account identifier, balance, and ledger entry is synthetic sample data. Transfers are simulated updates to browser storage only: they do not contact a bank, payment network, or external service and do not move real funds. No account, card, or payment secrets are requested. The app has no authentication, backend, database, API, or network requests; it is not suitable for real financial use.
+Loyiha shaxsiy bank panelining namunaviy ko‘rinishini namoyish etadi: hisoblar va ularning balanslari, jamlangan hamda oylik kirim-chiqim ko‘rsatkichlari, tranzaksiyalar jurnali va hisoblar orasida simulyatsiya transferini ko‘rib tasdiqlash jarayoni. Interfeysdagi barcha bank ma’lumotlari demo uchun yaratilgan.
 
-The reference technology list—**Python, Django, PostgreSQL, AWS**—describes a potential full-stack version only. None of those technologies or services is connected by this no-build browser demo; there is no bank integration.
+## Tasdiqlangan funksiyalar
 
-## Run locally
+- Ikki namunaviy hisobni — **Everyday Checking** va **Growth Savings** — hamda ularning balanslari va jami balansni ko‘rish.
+- Namunaviy jurnal asosida oylik kirim va chiqim summalarini ko‘rish.
+- Tranzaksiyalarni hisob bo‘yicha filtrlash, barcha faoliyat yoki transferlarni ajratish va matn orqali qidirish.
+- Hisoblar orasidagi demo transferini tuzish: manba va manzilni tanlash yoki almashtirish, miqdor hamda ixtiyoriy 60 belgigacha izoh kiritish.
+- Transferni tasdiqlashdan oldin tafsilotlarini ko‘rib chiqish. Ilova hisoblar turlicha ekanini, miqdor musbat va ko‘pi bilan ikki kasr xonali ekanini, namunaviy balans yetarliligini va demo limiti — **1 000 000 AQSh dollari** — oshmaganini tekshiradi.
+- Tasdiqlanganda, faqat simulyatsiya doirasida ikkala namunaviy balansni yangilash va jurnalda kirim-chiqim yozuvlarini yaratish.
+- Demo holatini shu brauzerning `localStorage` xotirasida saqlash; yuqoridagi tiklash tugmasi orqali dastlabki namunaviy ma’lumotlarga qaytish.
 
-1. Open a terminal in this folder.
-2. Run `python3 -m http.server 8765`.
-3. Open [http://localhost:8765](http://localhost:8765) in your browser.
+## Texnologiyalar
 
-The demo uses only the included HTML, CSS, and browser JavaScript files and requires no installation or build step.
+- **HTML5** — sahifa tuzilishi va formalar.
+- **CSS3** — ko‘rinish va turli ekran o‘lchamlariga moslashuvchi maket.
+- **Vanilla JavaScript** — interfeys, namunaviy ma’lumotlar va simulyatsiya mantiqi.
+- **Brauzer API’lari:** DOM, `localStorage`, HTML `<dialog>` elementlari, `window.confirm()` va `setTimeout()`; valyuta hamda sanalarni ko‘rsatishda `Intl`.
+
+Framework, server, ma’lumotlar bazasi yoki tashqi bank/payment integratsiyasi ishlatilmaydi. Loyihani ishga tushirish uchun `npm install` yoki build bosqichi kerak emas.
+
+## Talablar va mahalliy ishga tushirish
+
+Git va Python 3 o‘rnatilgan bo‘lishi, zamonaviy brauzer ishlatilishi kerak. Terminalda quyidagilarni bajaring:
+
+```bash
+git clone https://github.com/Abdulvoh1d/banking-system-sandbox-demo.git
+cd banking-system-sandbox-demo
+python3 -m http.server 8765
+```
+
+So‘ng brauzerda [http://localhost:8765](http://localhost:8765) manzilini oching. Server ishlayotgan terminal oynasini yopmasdan qoldiring.
+
+## Fayl tuzilishi
+
+```text
+banking-system-sandbox-demo/
+├── index.html   # Demo paneli va dialoglar tuzilishi
+├── app.js       # Namuna holati, UI va transfer simulyatsiyasi
+├── styles.css   # Uslublar va moslashuvchi maket
+└── README.md    # Loyiha haqida ma’lumot va ishga tushirish yo‘riqnomasi
+```
+
+## Ma’lumotlar, maxfiylik va demo chegaralari
+
+**Bu haqiqiy bank ilovasi emas.** Hisoblar, balanslar va tranzaksiyalar — faqat namunaviy ma’lumotlar. Transferni tasdiqlash ham brauzerdagi namunaviy balans va jurnalni o‘zgartiradigan simulyatsiyadir: u haqiqiy hisob, bank yoki to‘lov tarmog‘iga ulanmaydi va haqiqiy pul o‘tkazmaydi. Haqiqiy moliyaviy operatsiyalar uchun foydalanmang.
+
+Ilovaning holati joriy brauzerning `localStorage` xotirasida saqlanadi; boshqa brauzer yoki qurilmaga sinxronlanmaydi. Brauzer ma’lumotlarini tozalash demo holatini ham o‘chirishi mumkin. Bu xotira maxfiy ma’lumotlarni himoyalash vositasi emas — haqiqiy bank, karta yoki maxfiy hisob ma’lumotlarini kiritmang.
+
+## Litsenziya
+
+Repository’da `LICENSE` fayli yo‘q. Ommaviy GitHub repository mavjudligi o‘z-o‘zidan ochiq litsenziya berilganini anglatmaydi.
